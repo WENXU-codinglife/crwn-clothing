@@ -19,22 +19,19 @@ const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
 
+
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     }
 
     const signInWithGoogle = async () => {
-        console.log(1);
-        const {user} = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
-        console.log(user);
+        await signInWithGooglePopup();
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault(); // prevent any default actions from happening, that is, it only handles ...(look into it)
-        try {
-            const response = await signInAuthUserWithEmailAndPassword(email, password);
-            console.log(response);
+        try { 
+            const { user } = await signInAuthUserWithEmailAndPassword(email, password);
             resetFormFields();
         } catch (e) {
             console.log(e);
