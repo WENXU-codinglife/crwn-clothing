@@ -6,12 +6,9 @@ import './product-card.styles.scss'
 const ProductCard = ({ product }) => {
 
     const { name, price, imageUrl } = product;
-    const { cartItems, addItemToCart, cartItemsCount, setCartItemsCount } = useContext(CartContext);
+    const { addItemToCart } = useContext(CartContext);
     const addProductToCart = () => {
         addItemToCart(product);
-        console.log(cartItems);
-        // setCartItemsCount(cartItems.reduce((total, item) => total + item.quantity, 0));
-        setCartItemsCount(cartItemsCount + 1);
     }
     return (
         <div className='product-card-container'>
