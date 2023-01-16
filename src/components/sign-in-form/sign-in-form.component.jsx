@@ -34,7 +34,7 @@ const SignInForm = () => {
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
             resetFormFields();
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             switch(e.code){
                 case "auth/wrong-password":
                     alert("Incorrect password!");
